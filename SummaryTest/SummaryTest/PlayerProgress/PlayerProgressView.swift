@@ -1,18 +1,11 @@
 //
-//  PlayProgressView.swift
+//  PlayerProgressView.swift
 //  SummaryTest
 //
 //  Created by Serhii Oleinich on 05.11.2023.
 //
 
 import SwiftUI
-
-private extension PlayerProgressView {
-    enum Constants {
-        static let knobSize: CGSize = .init(width: 20, height: 20)
-        static let knobDraggableSize: CGSize = .init(width: 50, height: 50)
-    }
-}
 
 struct PlayerProgressView: View {
     @GestureState private var isDragging: Bool = false
@@ -35,6 +28,7 @@ struct PlayerProgressView: View {
 // MARK: - ViewBuilders
 
 private extension PlayerProgressView {
+    @ViewBuilder
     var seekBarView: some View {
         Rectangle()
             .fill(.gray)
@@ -75,6 +69,17 @@ private extension PlayerProgressView {
             .frame(width: Constants.knobSize.width, height: Constants.knobSize.height)
     }
 }
+
+// MARK: - Constants
+
+private extension PlayerProgressView {
+    enum Constants {
+        static let knobSize: CGSize = .init(width: 20, height: 20)
+        static let knobDraggableSize: CGSize = .init(width: 50, height: 50)
+    }
+}
+
+// MARK: - Preview
 
 struct PlayProgressView_Previews: PreviewProvider {
     static var previews: some View {
