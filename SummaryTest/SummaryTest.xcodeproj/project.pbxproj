@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */; };
+		7D60AFEF2AF806C400BA43C2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */; };
+		7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */; };
 		7DD1394F2AF7F9AF0046AB8B /* SummaryTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD1394E2AF7F9AF0046AB8B /* SummaryTestApp.swift */; };
 		7DD139532AF7F9B50046AB8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DD139522AF7F9B50046AB8B /* Assets.xcassets */; };
 		7DD139562AF7F9B50046AB8B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DD139552AF7F9B50046AB8B /* Preview Assets.xcassets */; };
@@ -15,6 +17,7 @@
 
 /* Begin PBXFileReference section */
 		7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
+		7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlDomain.swift; sourceTree = "<group>"; };
 		7DD1394B2AF7F9AF0046AB8B /* SummaryTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SummaryTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DD1394E2AF7F9AF0046AB8B /* SummaryTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryTestApp.swift; sourceTree = "<group>"; };
 		7DD139522AF7F9B50046AB8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -26,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D60AFEF2AF806C400BA43C2 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -36,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */,
+				7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */,
 			);
 			path = PlayControls;
 			sourceTree = "<group>";
@@ -91,6 +96,9 @@
 			dependencies = (
 			);
 			name = SummaryTest;
+			packageProductDependencies = (
+				7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */,
+			);
 			productName = SummaryTest;
 			productReference = 7DD1394B2AF7F9AF0046AB8B /* SummaryTest.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +127,9 @@
 				Base,
 			);
 			mainGroup = 7DD139422AF7F9AF0046AB8B;
+			packageReferences = (
+				7D60AFED2AF806C400BA43C2 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 7DD1394C2AF7F9AF0046AB8B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */,
 				7DD1394F2AF7F9AF0046AB8B /* SummaryTestApp.swift in Sources */,
 				7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */,
 			);
@@ -347,6 +359,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7D60AFED2AF806C400BA43C2 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7D60AFED2AF806C400BA43C2 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7DD139432AF7F9AF0046AB8B /* Project object */;
 }

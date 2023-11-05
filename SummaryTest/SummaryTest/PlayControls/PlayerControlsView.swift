@@ -7,49 +7,68 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+
 struct PlayerControlsView: View {
+    let store: StoreOf<PlayerControlDomain>
+    
     var body: some View {
-        HStack(spacing: 24.0) {
-            Button {
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            HStack {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "backward.end.fill")
+                        .frame(maxWidth: .infinity)
+                }
                 
-            } label: {
-                Image(systemName: "backward.end.fill")
-            }
-            
-            Button {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "gobackward.5")
+                        .frame(maxWidth: .infinity)
+                }
+                .scaleEffect(1.5)
                 
-            } label: {
-                Image(systemName: "gobackward.5")
-            }
-            .scaleEffect(1.2)
-            
-            Button {
+                Button {
+                    if viewStore.state.isPlaying {
+                        viewStore.send(.pauseButtonTapped)
+                    }
+                    else {
+                        viewStore.send(.playButtonTapped)
+                    }
+                } label: {
+                    Image(systemName: viewStore.state.isPlaying ? "pause.fill" : "play.fill")
+                        .frame(maxWidth: .infinity)
+                }
+                .scaleEffect(1.8)
                 
-            } label: {
-                Image(systemName: "pause.fill")
-            }
-            .scaleEffect(1.5)
-            
-            Button {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "goforward.10")
+                        .frame(maxWidth: .infinity)
+                }
+                .scaleEffect(1.5)
                 
-            } label: {
-                Image(systemName: "goforward.10")
+                Button {
+                    
+                } label: {
+                    Image(systemName: "forward.end.fill")
+                        .frame(maxWidth: .infinity)
+                }
             }
-            .scaleEffect(1.2)
-            
-            Button {
-                
-            } label: {
-                Image(systemName: "forward.end.fill")
-            }
+            .font(.system(size: 20))
+            .foregroundColor(.black)
         }
-        .font(.system(size: 20))
-        .foregroundColor(.black)
     }
 }
 
 struct PlayerControlsView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerControlsView()
+        PlayerControlsView(
+            store: Store(initialState: PlayerControlDomain.State()) {
+                PlayerControlDomain()
+            })
     }
 }
