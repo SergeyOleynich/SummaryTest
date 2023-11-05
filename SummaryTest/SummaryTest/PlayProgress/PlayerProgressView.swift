@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-private extension PlayProgressView {
+private extension PlayerProgressView {
     enum Constants {
         static let knobSize: CGSize = .init(width: 20, height: 20)
         static let knobDraggableSize: CGSize = .init(width: 50, height: 50)
     }
 }
 
-struct PlayProgressView: View {
+struct PlayerProgressView: View {
     @GestureState private var isDragging: Bool = false
     @State private var progress: Double = 0.0
     @State private var lastProgress: Double = 0.0
@@ -34,7 +34,7 @@ struct PlayProgressView: View {
 
 // MARK: - ViewBuilders
 
-private extension PlayProgressView {
+private extension PlayerProgressView {
     var seekBarView: some View {
         Rectangle()
             .fill(.gray)
@@ -78,7 +78,7 @@ private extension PlayProgressView {
 
 struct PlayProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayProgressView()
+        PlayerProgressView()
             .frame(width: 100)
             .frame(height: 3)
     }
