@@ -16,14 +16,14 @@ struct PlayerControlsView: View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             HStack {
                 Button {
-                    
+                    viewStore.send(.backwardButtonTapped)
                 } label: {
                     Image(systemName: "backward.end.fill")
                         .frame(maxWidth: .infinity)
                 }
                 
                 Button {
-                    
+                    viewStore.send(.goBackwardButtonTapped)
                 } label: {
                     Image(systemName: "gobackward.5")
                         .frame(maxWidth: .infinity)
@@ -44,7 +44,7 @@ struct PlayerControlsView: View {
                 .scaleEffect(1.8)
                 
                 Button {
-                    
+                    viewStore.send(.goForwardButtonTapped)
                 } label: {
                     Image(systemName: "goforward.10")
                         .frame(maxWidth: .infinity)
@@ -52,7 +52,7 @@ struct PlayerControlsView: View {
                 .scaleEffect(1.5)
                 
                 Button {
-                    
+                    viewStore.send(.forwardButtonTapped)
                 } label: {
                     Image(systemName: "forward.end.fill")
                         .frame(maxWidth: .infinity)
