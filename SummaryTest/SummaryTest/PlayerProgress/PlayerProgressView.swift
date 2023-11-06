@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+import Colors
+
 struct PlayerProgressView: View {
     @GestureState private var isDragging: Bool = false
     @State private var progress: Double = 0.0
@@ -30,19 +32,19 @@ struct PlayerProgressView: View {
 private extension PlayerProgressView {
     @ViewBuilder
     var seekBarView: some View {
-        Rectangle()
-            .fill(.gray)
+        Capsule()
+            .fill(Color._e5dfdc)
     }
     
     func trackView(seekWidth: Double) -> some View {
-        Rectangle()
-            .fill(.blue)
+        Capsule()
+            .fill(Color._0066ff)
             .frame(width: max(0, seekWidth * progress))
     }
     
     func knobView(seekWidth: Double) -> some View {
         Circle()
-            .fill(.blue)
+            .fill(Color._0066ff)
             .frame(
                 width: Constants.knobSize.width,
                 height: Constants.knobSize.height)
