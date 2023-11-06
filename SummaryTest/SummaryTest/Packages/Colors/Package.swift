@@ -12,7 +12,7 @@ private enum Targets: String, CaseIterable {
 let package = Package(
     name: packageName,
     platforms: [
-        .iOS(.v16)
+        .iOS(.v15)
     ],
     products: [
         .library(

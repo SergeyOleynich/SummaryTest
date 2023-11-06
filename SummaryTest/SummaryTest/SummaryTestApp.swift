@@ -11,7 +11,7 @@ import SwiftUI
 struct SummaryTestApp: App {
     var body: some Scene {
         WindowGroup {
-            Color.red
+            SummaryOverviewView()
         }
     }
 }
