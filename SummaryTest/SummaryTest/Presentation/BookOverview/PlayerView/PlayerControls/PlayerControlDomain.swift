@@ -12,6 +12,7 @@ import ComposableArchitecture
 struct PlayerControlDomain: Reducer {
     struct State: Equatable {
         var isPlaying = false
+        var isActive = false
     }
     
     enum Action {
@@ -22,7 +23,7 @@ struct PlayerControlDomain: Reducer {
         case goBackwardButtonTapped
         case goForwardButtonTapped
     }
-    
+        
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -30,13 +31,13 @@ struct PlayerControlDomain: Reducer {
                 if state.isPlaying == false {
                     state.isPlaying.toggle()
                 }
+                
                 return .none
                 
             case .pauseButtonTapped:
                 if state.isPlaying {
                     state.isPlaying.toggle()
                 }
-                
                 return .none
                 
             case .backwardButtonTapped:

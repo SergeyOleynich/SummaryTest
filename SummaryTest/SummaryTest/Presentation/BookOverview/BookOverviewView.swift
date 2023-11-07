@@ -34,13 +34,16 @@ struct BookOverviewView: View {
                 
                 Spacer(minLength: .zero)
                 
-                PlayerView(seekWidth: $seekWidth)
+                PlayerView(
+                    store: store.scope(state: \.playerState, action: { .playerViewAction(action: $0) }),
+                    seekWidth: $seekWidth)
                 
                 Spacer(minLength: .zero)
                 
                 PlayerControlsView(
-                    store: Store(
-                        initialState: PlayerControlDomain.State()) { PlayerControlDomain() })
+                    store: store.scope(
+                            state: \.playerControlState,
+                            action: { .playerControlAction(action: $0) }))
                 .frame(width: seekWidth)
                 .frame(height: Constants.playerControlsHeight)
                 

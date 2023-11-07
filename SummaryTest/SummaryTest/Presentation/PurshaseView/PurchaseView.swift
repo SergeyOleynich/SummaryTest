@@ -28,7 +28,7 @@ struct PurchaseView: View {
                         .foregroundColor(.black)
                 }
                 
-                Button("Start Listening - $89,99") {
+                Button("Start Listening - \(viewStore.formattedPrice)") {
                     viewStore.send(.purchasedButtonTapped, animation: .easeIn(duration: 0.3))
                 }
                 .buttonStyle(PurchaseButtonStyle())
@@ -43,17 +43,5 @@ struct PurchaseView: View {
 struct PurchaseView_Previews: PreviewProvider {
     static var previews: some View {
         PurchaseView(store: Store(initialState: PurchaseViewDomain.State()) { PurchaseViewDomain() })
-    }
-}
-
-struct PurchaseButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundColor(.white)
-            .fontWeight(.bold)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(configuration.isPressed ? Color._0066ff.opacity(0.5) : Color._0066ff)
-            .cornerRadius(4)
     }
 }

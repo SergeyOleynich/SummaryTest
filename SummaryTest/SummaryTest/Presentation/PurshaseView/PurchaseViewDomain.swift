@@ -22,9 +22,19 @@ struct PurchaseViewDomain: Reducer {
         Reduce { state, action in
             switch action {
             case .purchasedButtonTapped:
-                print(#function)
                 return .none
             }
         }
+    }
+}
+
+// MARK: - State Computed Properties
+
+extension PurchaseViewDomain.State {
+    var formattedPrice: String {
+        price
+            .formatted(
+                .currency(code: "USD")
+                .locale(Locale(identifier: "en_US_POSIX")))
     }
 }

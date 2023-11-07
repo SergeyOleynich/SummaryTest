@@ -17,24 +17,31 @@ struct PlayerControlsView: View {
             HStack(spacing: .zero) {
                 backwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 8)
+                    .foregroundColor(Constants.disableColor)
+                    .disabled(true)
                 
                 goBackwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 4)
+                    .disabled(!viewStore.isActive)
                 
                 if viewStore.isPlaying {
                     pauseView { viewStore.send($0) }
                 }
                 else {
                     playView { viewStore.send($0) }
+                        .disabled(!viewStore.isActive)
                 }
                 
                 goForwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 4)
+                    .disabled(!viewStore.isActive)
                 
                 forwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 8)
+                    .foregroundColor(Constants.disableColor)
+                    .disabled(true)
             }
-            .foregroundColor(.black)
+            .foregroundColor(viewStore.isActive ? Constants.activeColor : Constants.disableColor)
         }
     }
 }
@@ -109,6 +116,15 @@ private extension PlayerControlsView {
     }
 }
 
+// MARK: - Constants
+
+private extension PlayerControlsView {
+    enum Constants {
+        static let activeColor = Color.black
+        static let disableColor = Color.black.opacity(0.5)
+    }
+}
+
 // MARK: - Preview
 
 struct PlayerControlsView_Previews: PreviewProvider {
@@ -117,6 +133,5 @@ struct PlayerControlsView_Previews: PreviewProvider {
             store: Store(initialState: PlayerControlDomain.State()) {
                 PlayerControlDomain()
             })
-        //.frame(height: 40)
     }
 }

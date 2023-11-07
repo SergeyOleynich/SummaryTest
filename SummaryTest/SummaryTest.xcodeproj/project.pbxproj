@@ -13,6 +13,11 @@
 		7D1CEEAB2AF9582500F05C7D /* PurchaseBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEAA2AF9582500F05C7D /* PurchaseBackgroundView.swift */; };
 		7D1CEEAD2AF9F57600F05C7D /* BookOverviewDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEAC2AF9F57600F05C7D /* BookOverviewDomain.swift */; };
 		7D1CEEAF2AF9F8E000F05C7D /* PurchaseViewDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEAE2AF9F8E000F05C7D /* PurchaseViewDomain.swift */; };
+		7D1CEEB72AFA433500F05C7D /* PurchaseButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEB62AFA433500F05C7D /* PurchaseButtonStyle.swift */; };
+		7D1CEEB92AFA49F900F05C7D /* PlayerTimeProgressDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEB82AFA49F900F05C7D /* PlayerTimeProgressDomain.swift */; };
+		7D1CEEBB2AFA4AC500F05C7D /* PlayerViewDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEBA2AFA4AC500F05C7D /* PlayerViewDomain.swift */; };
+		7D1CEEC12AFA8F9A00F05C7D /* AudioPlayerClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEC02AFA8F9A00F05C7D /* AudioPlayerClient.swift */; };
+		7D1CEEC32AFAC53E00F05C7D /* PlayerProgressDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEC22AFAC53E00F05C7D /* PlayerProgressDomain.swift */; };
 		7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */; };
 		7D60AFEF2AF806C400BA43C2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */; };
 		7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */; };
@@ -36,6 +41,11 @@
 		7D1CEEAA2AF9582500F05C7D /* PurchaseBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseBackgroundView.swift; sourceTree = "<group>"; };
 		7D1CEEAC2AF9F57600F05C7D /* BookOverviewDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOverviewDomain.swift; sourceTree = "<group>"; };
 		7D1CEEAE2AF9F8E000F05C7D /* PurchaseViewDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseViewDomain.swift; sourceTree = "<group>"; };
+		7D1CEEB62AFA433500F05C7D /* PurchaseButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseButtonStyle.swift; sourceTree = "<group>"; };
+		7D1CEEB82AFA49F900F05C7D /* PlayerTimeProgressDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTimeProgressDomain.swift; sourceTree = "<group>"; };
+		7D1CEEBA2AFA4AC500F05C7D /* PlayerViewDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewDomain.swift; sourceTree = "<group>"; };
+		7D1CEEC02AFA8F9A00F05C7D /* AudioPlayerClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPlayerClient.swift; sourceTree = "<group>"; };
+		7D1CEEC22AFAC53E00F05C7D /* PlayerProgressDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProgressDomain.swift; sourceTree = "<group>"; };
 		7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlDomain.swift; sourceTree = "<group>"; };
 		7D60AFF62AF815C600BA43C2 /* PlayerProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgressView.swift; sourceTree = "<group>"; };
@@ -70,6 +80,7 @@
 				7D1CEE822AF9450D00F05C7D /* PurchaseView.swift */,
 				7D1CEEAA2AF9582500F05C7D /* PurchaseBackgroundView.swift */,
 				7D1CEEAE2AF9F8E000F05C7D /* PurchaseViewDomain.swift */,
+				7D1CEEB62AFA433500F05C7D /* PurchaseButtonStyle.swift */,
 			);
 			path = PurshaseView;
 			sourceTree = "<group>";
@@ -111,6 +122,22 @@
 			path = PreferenceKey;
 			sourceTree = "<group>";
 		};
+		7D1CEEBC2AFA8F5800F05C7D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				7D1CEEBD2AFA8F7700F05C7D /* AudioPlayerClient */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		7D1CEEBD2AFA8F7700F05C7D /* AudioPlayerClient */ = {
+			isa = PBXGroup;
+			children = (
+				7D1CEEC02AFA8F9A00F05C7D /* AudioPlayerClient.swift */,
+			);
+			path = AudioPlayerClient;
+			sourceTree = "<group>";
+		};
 		7D60AFEA2AF7FFF900BA43C2 /* PlayerControls */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				7D60AFF62AF815C600BA43C2 /* PlayerProgressView.swift */,
+				7D1CEEC22AFAC53E00F05C7D /* PlayerProgressDomain.swift */,
 			);
 			path = PlayerProgress;
 			sourceTree = "<group>";
@@ -132,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				7D60AFF92AF8287800BA43C2 /* PlayerTimeProgressView.swift */,
+				7D1CEEB82AFA49F900F05C7D /* PlayerTimeProgressDomain.swift */,
 			);
 			path = PlayerTimeProgress;
 			sourceTree = "<group>";
@@ -167,6 +196,7 @@
 				7D60AFF52AF815C600BA43C2 /* PlayerProgress */,
 				7D60AFEA2AF7FFF900BA43C2 /* PlayerControls */,
 				7D60B0292AF8EE8D00BA43C2 /* PlayerView.swift */,
+				7D1CEEBA2AFA4AC500F05C7D /* PlayerViewDomain.swift */,
 			);
 			path = PlayerView;
 			sourceTree = "<group>";
@@ -192,8 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				7DD1394E2AF7F9AF0046AB8B /* SummaryTestApp.swift */,
-				7D1CEE8A2AF94FA400F05C7D /* Presentation */,
 				7D60B0042AF8E20300BA43C2 /* Packages */,
+				7D1CEE8A2AF94FA400F05C7D /* Presentation */,
+				7D1CEEBC2AFA8F5800F05C7D /* Service */,
 				7D60B0392AF908AB00BA43C2 /* Summary_of_Atomic_Habits.mp3 */,
 				7DD139522AF7F9B50046AB8B /* Assets.xcassets */,
 				7DD139542AF7F9B50046AB8B /* Preview Content */,
@@ -289,17 +320,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1CEE8E2AF9514600F05C7D /* ChoiceToggleStyle.swift in Sources */,
+				7D1CEEB72AFA433500F05C7D /* PurchaseButtonStyle.swift in Sources */,
+				7D1CEEB92AFA49F900F05C7D /* PlayerTimeProgressDomain.swift in Sources */,
 				7D1CEE912AF9551B00F05C7D /* WidthPreferenceKey.swift in Sources */,
 				7D60AFF72AF815C600BA43C2 /* PlayerProgressView.swift in Sources */,
 				7D60AFFD2AF8DEF300BA43C2 /* SpeedButtonViewModifier.swift in Sources */,
 				7D1CEEAD2AF9F57600F05C7D /* BookOverviewDomain.swift in Sources */,
+				7D1CEEC12AFA8F9A00F05C7D /* AudioPlayerClient.swift in Sources */,
 				7D60B02A2AF8EE8D00BA43C2 /* PlayerView.swift in Sources */,
 				7D1CEE832AF9450D00F05C7D /* PurchaseView.swift in Sources */,
 				7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */,
 				7D60B03C2AF9093900BA43C2 /* BookOverviewView.swift in Sources */,
+				7D1CEEC32AFAC53E00F05C7D /* PlayerProgressDomain.swift in Sources */,
 				7D1CEEAF2AF9F8E000F05C7D /* PurchaseViewDomain.swift in Sources */,
 				7DD1394F2AF7F9AF0046AB8B /* SummaryTestApp.swift in Sources */,
 				7D1CEEAB2AF9582500F05C7D /* PurchaseBackgroundView.swift in Sources */,
+				7D1CEEBB2AFA4AC500F05C7D /* PlayerViewDomain.swift in Sources */,
 				7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */,
 				7D60AFFA2AF8287800BA43C2 /* PlayerTimeProgressView.swift in Sources */,
 			);

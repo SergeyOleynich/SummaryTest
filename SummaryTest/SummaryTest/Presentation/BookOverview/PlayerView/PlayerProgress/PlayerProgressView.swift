@@ -8,9 +8,9 @@
 import SwiftUI
 
 import Colors
+import ComposableArchitecture
 
 struct PlayerProgressView: View {
-    @State private var progress: Double = 0.0
     @State private var lastProgress: Double = 0.0
     
     @GestureState private var isDragging: Bool = false
@@ -18,23 +18,34 @@ struct PlayerProgressView: View {
     private var knobSize: CGSize = Constants.knobSize
     private var seekHeight: Double = Constants.seekHeight
     
+    let store: StoreOf<PlayerProgressDomain>
+    
+    init(store: StoreOf<PlayerProgressDomain>) {
+        self.store = store
+    }
+    
     var body: some View {
-        GeometryReader { proxy in
-            VStack(spacing: .zero) {
-                Spacer(minLength: .zero)
-                
-                seekBarView
-                    .overlay(alignment: .leading) {
-                        trackView(seekWidth: proxy.size.width)
-                    }
-                    .overlay(alignment: .leading) {
-                        knobView(seekWidth: proxy.size.width)
-                    }
-                
-                Spacer(minLength: .zero)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            GeometryReader { proxy in
+                VStack(spacing: .zero) {
+                    Spacer(minLength: .zero)
+                    
+                    seekBarView
+                        .overlay(alignment: .leading) {
+                            trackView(progress: viewStore.progress, seekWidth: proxy.size.width)
+                        }
+                        .overlay(alignment: .leading) {
+                            knobView(progress: viewStore.progress, seekWidth: proxy.size.width)
+                        }
+                    
+                    Spacer(minLength: .zero)
+                }
+                .onChange(of: viewStore.currentTimeInterval) { newValue in
+                    
+                }
             }
+            .frame(height: knobSize.height)
         }
-        .frame(height: knobSize.height)
     }
 }
 
@@ -64,13 +75,13 @@ private extension PlayerProgressView {
             .frame(height: seekHeight)
     }
     
-    func trackView(seekWidth: Double) -> some View {
+    func trackView(progress: Double, seekWidth: Double) -> some View {
         Capsule()
             .fill(Color._0066ff)
             .frame(width: max(0, seekWidth * progress))
     }
     
-    func knobView(seekWidth: Double) -> some View {
+    func knobView(progress: Double, seekWidth: Double) -> some View {
         Circle()
             .fill(Color._0066ff)
             .frame(
@@ -81,20 +92,20 @@ private extension PlayerProgressView {
                 height: knobSize.height + Constants.knobDraggableOffset.vertical)
             .contentShape(Rectangle())
             .offset(x: seekWidth * progress)
-            .gesture(
-                DragGesture()
-                    .updating($isDragging, body: { _, out, _ in
-                        out = true
-                    })
-                    .onChanged({ value in
-                        let translation = value.translation.width
-                        let progress = (translation / seekWidth) + lastProgress
-                        
-                        self.progress = max(min(progress, 1), 0)
-                    })
-                    .onEnded({ value in
-                        lastProgress = progress
-                    }))
+//            .gesture(
+//                DragGesture()
+//                    .updating($isDragging, body: { _, out, _ in
+//                        out = true
+//                    })
+//                    .onChanged({ value in
+//                        let translation = value.translation.width
+//                        let progress = (translation / seekWidth) + lastProgress
+//
+//                        self.progress = max(min(progress, 1), 0)
+//                    })
+//                    .onEnded({ value in
+//                        lastProgress = progress
+//                    }))
             .offset(x: progress * seekWidth > knobSize.width ? -knobSize.width : .zero)
             .frame(width: knobSize.width, height: knobSize.height)
     }
@@ -114,7 +125,8 @@ private extension PlayerProgressView {
 
 struct PlayProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerProgressView()
+        PlayerProgressView(
+            store: Store(initialState: PlayerProgressDomain.State(currentTimeInterval: 0.0)) { PlayerProgressDomain() })
             .seekHeight(6)
             .frame(width: 100)
             .background(Color.red)
