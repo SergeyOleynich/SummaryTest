@@ -8,26 +8,33 @@
 import SwiftUI
 
 import Colors
+import ComposableArchitecture
 
 struct PurchaseView: View {
+    let store: StoreOf<PurchaseViewDomain>
+    
     var body: some View {
-        VStack(spacing: 16.0) {
-            VStack(spacing: 8.0) {
-                Text("Unlock learning")
-                    .font(.system(.largeTitle))
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            VStack(spacing: 16.0) {
+                VStack(spacing: 8.0) {
+                    Text("Unlock learning")
+                        .font(.system(.largeTitle))
+                        .foregroundColor(.black)
+                    
+                    Text("Grow on the go by listening and reading the world's best ideas")
+                        .lineLimit(2)
+                        .multilineTextAlignment(.center)
+                        .font(.system(.headline))
+                        .foregroundColor(.black)
+                }
                 
-                Text("Grow on the go by listening and reading the world's best ideas")
-                    .lineLimit(2)
-                    .multilineTextAlignment(.center)
-                    .font(.system(.headline))
+                Button("Start Listening - $89,99") {
+                    viewStore.send(.purchasedButtonTapped, animation: .easeIn(duration: 0.3))
+                }
+                .buttonStyle(PurchaseButtonStyle())
             }
-            
-            Button("Start Listening - $89,99") {
-                
-            }
-            .buttonStyle(PurchaseButtonStyle())
+            .padding()
         }
-        .padding()
     }
 }
 
@@ -35,7 +42,7 @@ struct PurchaseView: View {
 
 struct PurchaseView_Previews: PreviewProvider {
     static var previews: some View {
-        PurchaseView()
+        PurchaseView(store: Store(initialState: PurchaseViewDomain.State()) { PurchaseViewDomain() })
     }
 }
 

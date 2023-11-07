@@ -23,32 +23,34 @@ struct PlayerControlDomain: Reducer {
         case goForwardButtonTapped
     }
     
-    func reduce(into state: inout State, action: Action) -> Effect<Action> {
-        switch action {
-        case .playButtonTapped:
-            if state.isPlaying == false {
-                state.isPlaying.toggle()
+    var body: some ReducerOf<Self> {
+        Reduce { state, action in
+            switch action {
+            case .playButtonTapped:
+                if state.isPlaying == false {
+                    state.isPlaying.toggle()
+                }
+                return .none
+                
+            case .pauseButtonTapped:
+                if state.isPlaying {
+                    state.isPlaying.toggle()
+                }
+                
+                return .none
+                
+            case .backwardButtonTapped:
+                return .none
+                
+            case .forwardButtonTapped:
+                return .none
+                
+            case .goBackwardButtonTapped:
+                return .none
+                
+            case .goForwardButtonTapped:
+                return .none
             }
-            return .none
-            
-        case .pauseButtonTapped:
-            if state.isPlaying {
-                state.isPlaying.toggle()
-            }
-            
-            return .none
-            
-        case .backwardButtonTapped:
-            return .none
-            
-        case .forwardButtonTapped:
-            return .none
-            
-        case .goBackwardButtonTapped:
-            return .none
-            
-        case .goForwardButtonTapped:
-            return .none
         }
     }
 }

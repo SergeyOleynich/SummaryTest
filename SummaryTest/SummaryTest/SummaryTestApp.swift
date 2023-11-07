@@ -7,11 +7,17 @@
 
 import SwiftUI
 
+import ComposableArchitecture
+
 @main
 struct SummaryTestApp: App {
+    @State private var store = Store(initialState: BookOverviewDomain.State()) {
+        BookOverviewDomain()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            SummaryOverviewView()
+            BookOverviewView(store: store)
         }
     }
 }
