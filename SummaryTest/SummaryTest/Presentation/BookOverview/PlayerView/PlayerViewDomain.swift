@@ -14,7 +14,7 @@ struct PlayerViewDomain: Reducer {
         var isPlaying: Bool = false
         var rate: Rate = .normal
         
-        var itemTitle: String = ""//KEY POINT 2 OF 10
+        var itemTitle: String = ""
         var itemDescription: String = ""
         
         var progressViewState: PlayerTimeProgressDomain.State = .init()

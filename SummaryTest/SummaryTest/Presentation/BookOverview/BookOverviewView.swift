@@ -22,7 +22,7 @@ struct BookOverviewView: View {
                 viewStore.book?.image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .padding([.leading, .trailing], 68)
+                    .padding([.leading, .trailing], Constants.imagePadding)
                     .background(
                         GeometryReader { geometry -> Color in
                             DispatchQueue.main.async {
@@ -103,6 +103,7 @@ private extension BookOverviewView {
     enum Constants {
         static let playerControlsHeight = 30.0
         static let contentPadding = 16.0
+        static let imagePadding = 68.0
     }
 }
 

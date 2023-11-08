@@ -29,6 +29,8 @@
 		7D1CEEE72AFB80DE00F05C7D /* BookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE62AFB80DE00F05C7D /* BookItem.swift */; };
 		7D1CEEE92AFBA10200F05C7D /* BookKeyPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE82AFBA10200F05C7D /* BookKeyPoint.swift */; };
 		7D1CEEEC2AFBB95C00F05C7D /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEEB2AFBB95C00F05C7D /* Collection+Extension.swift */; };
+		7D1CEEF02AFBBB2400F05C7D /* DateComponentsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEEF2AFBBB2400F05C7D /* DateComponentsFormatter.swift */; };
+		7D1CEEF22AFBBB4500F05C7D /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEF12AFBBB4500F05C7D /* Optional+Extensions.swift */; };
 		7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */; };
 		7D60AFEF2AF806C400BA43C2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */; };
 		7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */; };
@@ -68,6 +70,8 @@
 		7D1CEEE62AFB80DE00F05C7D /* BookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItem.swift; sourceTree = "<group>"; };
 		7D1CEEE82AFBA10200F05C7D /* BookKeyPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookKeyPoint.swift; sourceTree = "<group>"; };
 		7D1CEEEB2AFBB95C00F05C7D /* Collection+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
+		7D1CEEEF2AFBBB2400F05C7D /* DateComponentsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateComponentsFormatter.swift; sourceTree = "<group>"; };
+		7D1CEEF12AFBBB4500F05C7D /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlDomain.swift; sourceTree = "<group>"; };
 		7D60AFF62AF815C600BA43C2 /* PlayerProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgressView.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 			isa = PBXGroup;
 			children = (
 				7D1CEEEB2AFBB95C00F05C7D /* Collection+Extension.swift */,
+				7D1CEEEF2AFBBB2400F05C7D /* DateComponentsFormatter.swift */,
+				7D1CEEF12AFBBB4500F05C7D /* Optional+Extensions.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -379,6 +385,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D1CEE8E2AF9514600F05C7D /* ChoiceToggleStyle.swift in Sources */,
+				7D1CEEF22AFBBB4500F05C7D /* Optional+Extensions.swift in Sources */,
 				7D1CEEEC2AFBB95C00F05C7D /* Collection+Extension.swift in Sources */,
 				7D1CEEB72AFA433500F05C7D /* PurchaseButtonStyle.swift in Sources */,
 				7D1CEEB92AFA49F900F05C7D /* PlayerTimeProgressDomain.swift in Sources */,
@@ -387,6 +394,7 @@
 				7D1CEEDA2AFB776800F05C7D /* StoreKitClient+Dependency.swift in Sources */,
 				7D1CEEDC2AFB779000F05C7D /* StoreKitActor.swift in Sources */,
 				7D60AFFD2AF8DEF300BA43C2 /* SpeedButtonViewModifier.swift in Sources */,
+				7D1CEEF02AFBBB2400F05C7D /* DateComponentsFormatter.swift in Sources */,
 				7D1CEEDE2AFB77F100F05C7D /* AudioActor.swift in Sources */,
 				7D1CEEAD2AF9F57600F05C7D /* BookOverviewDomain.swift in Sources */,
 				7D1CEEC12AFA8F9A00F05C7D /* AudioPlayerClient.swift in Sources */,

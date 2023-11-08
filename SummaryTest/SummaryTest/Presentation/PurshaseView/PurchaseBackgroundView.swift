@@ -24,6 +24,7 @@ struct PurchaseBackgroundView<Content: View>: View {
 
 // MARK: - Preview
 
+#if DEBUG
 struct PurchaseBackgroundView_Previews: PreviewProvider {
     static var previews: some View {
         PurchaseBackgroundView {
@@ -31,3 +32,4 @@ struct PurchaseBackgroundView_Previews: PreviewProvider {
         }
     }
 }
+#endif
