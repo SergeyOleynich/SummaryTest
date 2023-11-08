@@ -22,11 +22,17 @@ struct PlayerControlDomain: Reducer {
         case forwardButtonTapped
         case goBackwardButtonTapped
         case goForwardButtonTapped
+        
+        case toggleActionButton
     }
         
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .toggleActionButton:
+                state.isPlaying.toggle()
+                return .none
+                
             case .playButtonTapped:
                 if state.isPlaying == false {
                     state.isPlaying.toggle()

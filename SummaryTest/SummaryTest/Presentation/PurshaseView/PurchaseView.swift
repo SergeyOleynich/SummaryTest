@@ -40,8 +40,9 @@ struct PurchaseView: View {
 
 // MARK: - Preview
 
-struct PurchaseView_Previews: PreviewProvider {
-    static var previews: some View {
-        PurchaseView(store: Store(initialState: PurchaseViewDomain.State()) { PurchaseViewDomain() })
-    }
-}
+//struct PurchaseView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let product = Product()
+//        PurchaseView(store: Store(initialState: PurchaseViewDomain.State(product: product)) { PurchaseViewDomain() })
+//    }
+//}

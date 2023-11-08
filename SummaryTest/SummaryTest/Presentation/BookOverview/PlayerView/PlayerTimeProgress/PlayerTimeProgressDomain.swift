@@ -20,8 +20,8 @@ extension DateComponentsFormatter {
 
 struct PlayerTimeProgressDomain: Reducer {
     struct State: Equatable {
-        var currentTimeInterval: TimeInterval? = nil
-        var maxTimeInterval: TimeInterval? = nil
+        var currentTimeInterval: TimeInterval? = 0.0
+        var maxTimeInterval: TimeInterval? = 0.0
         
         var playerProgressState: PlayerProgressDomain.State = .init(currentTimeInterval: 0.0)
     }

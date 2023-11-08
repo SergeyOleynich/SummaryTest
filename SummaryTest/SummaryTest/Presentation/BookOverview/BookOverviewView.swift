@@ -11,7 +11,7 @@ import Colors
 import ComposableArchitecture
 
 struct BookOverviewView: View {
-    @State private var seekWidth: CGFloat = 290.0
+    @State private var seekWidth: CGFloat = 0.0
     @State private var bookImageOffset: CGFloat = 0.0
     
     let store: StoreOf<BookOverviewDomain>
@@ -58,6 +58,10 @@ struct BookOverviewView: View {
                     .padding(.top, bookImageOffset)
                     .ignoresSafeArea(edges: .bottom)
             )
+            .task { viewStore.send(.onRequestPurchaseItem) }
+            .alert(store: store.scope(state: \.$playerAlert, action: { .playerAlert($0) }))
+            .alert(store: store.scope(state: \.$storeKitAlert, action: { .storeKitAlert($0) }))
+            .opacity(viewStore.isLoading ? 0.0 : 1.0)
         }
     }
 }

@@ -1,0 +1,33 @@
+{
+  "identifier" : "EF3746A3",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "89.99",
+      "familyShareable" : false,
+      "internalID" : "E199726B",
+      "localizations" : [
+        {
+          "description" : "Atomic Description",
+          "displayName" : "Atomic Display Name",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "osa.SummaryTest.Atomic",
+      "referenceName" : "Atomic",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

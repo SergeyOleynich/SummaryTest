@@ -14,6 +14,7 @@ struct PlayerViewDomain: Reducer {
         let itemTitle: String = "KEY POINT 2 OF 10"
         let itemDescription: String = "Design is not how thing looks, but how it works"
         
+        var isPlaying: Bool = false
         var rate: Rate = .normal
         
         var progressViewState: PlayerTimeProgressDomain.State = .init()
@@ -28,6 +29,7 @@ struct PlayerViewDomain: Reducer {
         case didReceiveItemDuration(duration: TimeInterval)
         case didStartPlaying
         case didPausePlaying
+        case didFinishPlaying
         case didGoForward
         case didGoBackward
         
@@ -78,12 +80,12 @@ struct PlayerViewDomain: Reducer {
                         let isItemLoaded = try await audioPlayer.load(itemUrl)
                         await send(.didLoadItemUrl(success: isItemLoaded))
                     } catch {
-                        print(error)
                         await send(.didFailedToLoadItem(error: error))
                     }
                 }
                 
             case .didStartPlaying:
+                state.isPlaying = true
                 return .run {[rate = state.rate] send in
                     _ = try await audioPlayer.play()
                     
@@ -95,12 +97,19 @@ struct PlayerViewDomain: Reducer {
                 .cancellable(id: CancelID.timer)
                 
             case .didPausePlaying:
+                state.isPlaying = false
                 return .merge(
                     .run { send in
                         await audioPlayer.pause()
                     },
                     .cancel(id: CancelID.timer)
                 )
+                
+            case .didFinishPlaying:
+                state.isPlaying = false
+                state.progressViewState.currentTimeInterval = 0.0
+                state.progressViewState.playerProgressState.currentTimeInterval = 0.0
+                return .cancel(id: CancelID.timer)
                 
             case .didGoForward:
                 return .run { _ in
@@ -130,13 +139,15 @@ struct PlayerViewDomain: Reducer {
             case .speedButtonTapped:
                 state.rate.toggle()
                 return .merge(
-                    .run {[rate = state.rate] send in
+                    .run {[rate = state.rate, isPlaying = state.isPlaying] send in
                         await audioPlayer.setRate(rate.rawValue)
                         
-                        let currentTime = await audioPlayer.currentTimeInterval()
-                        await send(.timerTicked(timeInterval: currentTime))
-                        
-                        await send(.didStartPlaying)
+                        if isPlaying {   
+                            let currentTime = await audioPlayer.currentTimeInterval()
+                            await send(.timerTicked(timeInterval: currentTime))
+                            
+                            await send(.didStartPlaying)
+                        }
                     },
                     .cancel(id: CancelID.timer)
                 )
