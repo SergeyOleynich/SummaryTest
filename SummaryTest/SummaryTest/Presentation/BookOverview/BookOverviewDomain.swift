@@ -139,7 +139,7 @@ struct BookOverviewDomain: Reducer {
                 
             case .purchaseFinished:
                 state.purchaseState = nil
-                let itemUrl = Bundle.main.url(forResource: "startToRight", withExtension: "mp3")!//Summary_of_Atomic_Habits
+                let itemUrl = Bundle.main.url(forResource: "Summary_of_Atomic_Habits", withExtension: "mp3")!
                 
                 return .send(.playerViewAction(action: .didReceiveItemUrl(itemUrl: itemUrl)))
                 
