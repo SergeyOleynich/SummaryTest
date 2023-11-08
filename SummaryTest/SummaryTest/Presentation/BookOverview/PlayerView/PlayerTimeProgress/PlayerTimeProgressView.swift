@@ -66,6 +66,7 @@ struct PlayerTimeProgressView_Previews: PreviewProvider {
         let state = PlayerTimeProgressDomain.State(
             currentTimeInterval: 0.0,
             maxTimeInterval: 60)
+        
         PlayerTimeProgressView(
             store: Store(initialState: state) { PlayerTimeProgressDomain() })
     }

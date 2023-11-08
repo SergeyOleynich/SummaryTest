@@ -106,6 +106,7 @@ struct BookOverviewDomain: Reducer {
                 return .none
                 
             case let .playerViewAction(.didLoadItemUrl(success)):
+                state.playerControlState.isPlaying = false
                 state.playerControlState.isActive = success
                 return .none
             

@@ -75,16 +75,23 @@ struct PlayerViewDomain: Reducer {
                 return .none
                 
             case let .didReceiveItemUrl(itemUrl):
-                return .run {[rate = state.rate] send in
-                    do {
-                        let isItemLoaded = try await audioPlayer.load(itemUrl)
-                        await audioPlayer.setRate(rate.rawValue)
+                state.isPlaying = false
+                
+                return .merge(
+                    .run {[rate = state.rate] send in
+                        await audioPlayer.pause()
                         
-                        await send(.didLoadItemUrl(success: isItemLoaded))
-                    } catch {
-                        await send(.didFailedToLoadItem(error: error))
-                    }
-                }
+                        do {
+                            let isItemLoaded = try await audioPlayer.load(itemUrl)
+                            await audioPlayer.setRate(rate.rawValue)
+                            
+                            await send(.didLoadItemUrl(success: isItemLoaded))
+                        } catch {
+                            await send(.didFailedToLoadItem(error: error))
+                        }
+                    },
+                    .cancel(id: CancelID.timer)
+                )
                 
             case .didStartPlaying:
                 state.isPlaying = true

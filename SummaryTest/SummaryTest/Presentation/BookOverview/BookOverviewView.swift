@@ -19,7 +19,7 @@ struct BookOverviewView: View {
     var body: some View {
         WithViewStore(store, observe: { $0 }) { viewStore in
             VStack(alignment: .center, spacing: .zero) {
-                Image("AtomicHabits")
+                viewStore.book?.image
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding([.leading, .trailing], 68)
