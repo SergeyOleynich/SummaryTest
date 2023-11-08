@@ -17,8 +17,8 @@ struct PlayerControlsView: View {
             HStack(spacing: .zero) {
                 backwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 8)
-                    .foregroundColor(Constants.disableColor)
-                    .disabled(true)
+                    .foregroundColor(viewStore.isBackwardActive ? Constants.activeColor : Constants.disableColor)
+                    .disabled(!viewStore.isBackwardActive)
                 
                 goBackwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 4)
@@ -38,8 +38,8 @@ struct PlayerControlsView: View {
                 
                 forwardView { viewStore.send($0) }
                     .padding([.top, .bottom], 8)
-                    .foregroundColor(Constants.disableColor)
-                    .disabled(true)
+                    .foregroundColor(viewStore.isForwardActive ? Constants.activeColor : Constants.disableColor)
+                    .disabled(!viewStore.isForwardActive)
             }
             .foregroundColor(viewStore.isActive ? Constants.activeColor : Constants.disableColor)
         }

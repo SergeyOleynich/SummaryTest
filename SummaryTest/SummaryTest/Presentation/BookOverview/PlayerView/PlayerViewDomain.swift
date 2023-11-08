@@ -10,12 +10,12 @@ import SwiftUI
 import ComposableArchitecture
 
 struct PlayerViewDomain: Reducer {
-    struct State: Equatable {
-        let itemTitle: String = "KEY POINT 2 OF 10"
-        let itemDescription: String = "Design is not how thing looks, but how it works"
-        
+    struct State: Equatable {        
         var isPlaying: Bool = false
         var rate: Rate = .normal
+        
+        var itemTitle: String = ""//KEY POINT 2 OF 10
+        var itemDescription: String = ""
         
         var progressViewState: PlayerTimeProgressDomain.State = .init()
     }
@@ -23,7 +23,7 @@ struct PlayerViewDomain: Reducer {
     enum Action {
         case progressViewAction(action: PlayerTimeProgressDomain.Action)
         
-        case didReceiveItemUrl(itemUrl: URL)
+        case didReceiveItemUrl(item: URL)
         case didLoadItemUrl(success: Bool)
         case didFailedToLoadItem(error: Error)
         case didReceiveItemDuration(duration: TimeInterval)
@@ -75,9 +75,11 @@ struct PlayerViewDomain: Reducer {
                 return .none
                 
             case let .didReceiveItemUrl(itemUrl):
-                return .run { send in
+                return .run {[rate = state.rate] send in
                     do {
                         let isItemLoaded = try await audioPlayer.load(itemUrl)
+                        await audioPlayer.setRate(rate.rawValue)
+                        
                         await send(.didLoadItemUrl(success: isItemLoaded))
                     } catch {
                         await send(.didFailedToLoadItem(error: error))

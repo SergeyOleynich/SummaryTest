@@ -7,8 +7,6 @@
 
 import Foundation
 
-import StoreKit
-
 // MARK: - StoreKitError
 
 enum StoreKitError: Error {
@@ -18,6 +16,6 @@ enum StoreKitError: Error {
 // MARK: - StoreKitClient
 
 struct StoreKitClient {
-    var product: () async throws -> Product?
-    var purchase: (Product) async throws -> Transaction?
+    var product: () async throws -> BookItem?
+    var purchase: (BookItem) async throws -> Bool
 }

@@ -13,6 +13,9 @@ struct PlayerControlDomain: Reducer {
     struct State: Equatable {
         var isPlaying = false
         var isActive = false
+        
+        var isBackwardActive = false
+        var isForwardActive = false
     }
     
     enum Action {

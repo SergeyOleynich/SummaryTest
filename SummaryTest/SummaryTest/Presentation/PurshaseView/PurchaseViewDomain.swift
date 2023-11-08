@@ -8,11 +8,10 @@
 import SwiftUI
 
 import ComposableArchitecture
-import StoreKit
 
 struct PurchaseViewDomain: Reducer {
     struct State: Equatable {
-        let product: Product
+        let item: BookItem
     }
     
     enum Action {
@@ -33,7 +32,7 @@ struct PurchaseViewDomain: Reducer {
 
 extension PurchaseViewDomain.State {
     var formattedPrice: String {
-        product
+        item
             .price
             .formatted(
                 .currency(code: "USD")

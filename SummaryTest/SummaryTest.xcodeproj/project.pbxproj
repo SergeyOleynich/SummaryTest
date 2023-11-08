@@ -25,6 +25,9 @@
 		7D1CEEDE2AFB77F100F05C7D /* AudioActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEDD2AFB77F100F05C7D /* AudioActor.swift */; };
 		7D1CEEE02AFB781A00F05C7D /* AudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEDF2AFB781A00F05C7D /* AudioDelegate.swift */; };
 		7D1CEEE22AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE12AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift */; };
+		7D1CEEE42AFB809D00F05C7D /* Summary_of_Rich_Dad.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE32AFB809D00F05C7D /* Summary_of_Rich_Dad.mp3 */; };
+		7D1CEEE72AFB80DE00F05C7D /* BookItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE62AFB80DE00F05C7D /* BookItem.swift */; };
+		7D1CEEE92AFBA10200F05C7D /* BookKeyPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE82AFBA10200F05C7D /* BookKeyPoint.swift */; };
 		7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */; };
 		7D60AFEF2AF806C400BA43C2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */; };
 		7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */; };
@@ -60,6 +63,9 @@
 		7D1CEEDD2AFB77F100F05C7D /* AudioActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioActor.swift; sourceTree = "<group>"; };
 		7D1CEEDF2AFB781A00F05C7D /* AudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDelegate.swift; sourceTree = "<group>"; };
 		7D1CEEE12AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioPlayerClient+Dependency.swift"; sourceTree = "<group>"; };
+		7D1CEEE32AFB809D00F05C7D /* Summary_of_Rich_Dad.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Summary_of_Rich_Dad.mp3; sourceTree = "<group>"; };
+		7D1CEEE62AFB80DE00F05C7D /* BookItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookItem.swift; sourceTree = "<group>"; };
+		7D1CEEE82AFBA10200F05C7D /* BookKeyPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookKeyPoint.swift; sourceTree = "<group>"; };
 		7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlDomain.swift; sourceTree = "<group>"; };
 		7D60AFF62AF815C600BA43C2 /* PlayerProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgressView.swift; sourceTree = "<group>"; };
@@ -167,6 +173,15 @@
 			path = StoreKit;
 			sourceTree = "<group>";
 		};
+		7D1CEEE52AFB80CF00F05C7D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7D1CEEE62AFB80DE00F05C7D /* BookItem.swift */,
+				7D1CEEE82AFBA10200F05C7D /* BookKeyPoint.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		7D60AFEA2AF7FFF900BA43C2 /* PlayerControls */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +269,9 @@
 				7D60B0042AF8E20300BA43C2 /* Packages */,
 				7D1CEE8A2AF94FA400F05C7D /* Presentation */,
 				7D1CEEBC2AFA8F5800F05C7D /* Service */,
+				7D1CEEE52AFB80CF00F05C7D /* Model */,
 				7D60B0392AF908AB00BA43C2 /* Summary_of_Atomic_Habits.mp3 */,
+				7D1CEEE32AFB809D00F05C7D /* Summary_of_Rich_Dad.mp3 */,
 				7DD139522AF7F9B50046AB8B /* Assets.xcassets */,
 				7DD139542AF7F9B50046AB8B /* Preview Content */,
 			);
@@ -339,6 +356,7 @@
 				7D60B03A2AF908AB00BA43C2 /* Summary_of_Atomic_Habits.mp3 in Resources */,
 				7D1CEED42AFAFCA100F05C7D /* Product.storekit in Resources */,
 				7DD139532AF7F9B50046AB8B /* Assets.xcassets in Resources */,
+				7D1CEEE42AFB809D00F05C7D /* Summary_of_Rich_Dad.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +392,8 @@
 				7D1CEEBB2AFA4AC500F05C7D /* PlayerViewDomain.swift in Sources */,
 				7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */,
 				7D60AFFA2AF8287800BA43C2 /* PlayerTimeProgressView.swift in Sources */,
+				7D1CEEE72AFB80DE00F05C7D /* BookItem.swift in Sources */,
+				7D1CEEE92AFBA10200F05C7D /* BookKeyPoint.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
