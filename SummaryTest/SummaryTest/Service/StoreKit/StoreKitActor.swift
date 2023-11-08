@@ -11,9 +11,10 @@ import SwiftUI
 
 actor StoreKitActor {
     private var products: [Product] = []
+    private let productId = "osa.SummaryTest.Atomic"
     
     func product() async throws -> BookItem? {
-        guard let product = try await Product.products(for: ["osa.SummaryTest.Atomic"]).first else { return nil }
+        guard let product = try await Product.products(for: [productId]).first else { return nil }
         
         guard let firstItemUrl = Bundle.main.url(forResource: "Summary_of_Atomic_Habits", withExtension: "mp3") else { return nil }
         guard let secondItemUrl = Bundle.main.url(forResource: "Summary_of_Rich_Dad", withExtension: "mp3") else { return nil }

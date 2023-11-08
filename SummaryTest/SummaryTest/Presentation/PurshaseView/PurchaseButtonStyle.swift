@@ -20,3 +20,17 @@ struct PurchaseButtonStyle: ButtonStyle {
             .cornerRadius(4)
     }
 }
+
+// MARK: - Preview
+
+#if DEBUG
+struct PurchaseButtonStyle_Previews: PreviewProvider {
+    static var previews: some View {
+        Button("Purchase") {
+            
+        }
+        .padding()
+        .buttonStyle(PurchaseButtonStyle())
+    }
+}
+#endif

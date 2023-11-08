@@ -62,8 +62,10 @@ private extension PlayerView {
 
 // MARK: - Preview
 
+#if DEBUG
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerView(store: Store(initialState: PlayerViewDomain.State()) { PlayerViewDomain() })
     }
 }
+#endif

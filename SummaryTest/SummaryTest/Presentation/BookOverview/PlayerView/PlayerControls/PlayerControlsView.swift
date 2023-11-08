@@ -127,6 +127,7 @@ private extension PlayerControlsView {
 
 // MARK: - Preview
 
+#if DEBUG
 struct PlayerControlsView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerControlsView(
@@ -135,3 +136,4 @@ struct PlayerControlsView_Previews: PreviewProvider {
             })
     }
 }
+#endif

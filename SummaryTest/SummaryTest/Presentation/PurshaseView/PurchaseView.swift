@@ -40,9 +40,17 @@ struct PurchaseView: View {
 
 // MARK: - Preview
 
-//struct PurchaseView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let product = Product()
-//        PurchaseView(store: Store(initialState: PurchaseViewDomain.State(product: product)) { PurchaseViewDomain() })
-//    }
-//}
+#if DEBUG
+struct PurchaseView_Previews: PreviewProvider {
+    static var previews: some View {
+        let item = BookItem(
+            id: "1",
+            title: "Title",
+            image: Image(systemName: "pencil"),
+            price: 89.99,
+            keyPoints: [])
+    
+        PurchaseView(store: Store(initialState: PurchaseViewDomain.State(item: item)) { PurchaseViewDomain() })
+    }
+}
+#endif

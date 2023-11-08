@@ -61,6 +61,7 @@ private extension PlayerTimeProgressView {
 
 // MARK: - Preview
 
+#if DEBUG
 struct PlayerTimeProgressView_Previews: PreviewProvider {
     static var previews: some View {
         let state = PlayerTimeProgressDomain.State(
@@ -71,3 +72,4 @@ struct PlayerTimeProgressView_Previews: PreviewProvider {
             store: Store(initialState: state) { PlayerTimeProgressDomain() })
     }
 }
+#endif

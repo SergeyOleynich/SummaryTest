@@ -123,6 +123,7 @@ private extension PlayerProgressView {
 
 // MARK: - Preview
 
+#if DEBUG
 struct PlayProgressView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerProgressView(
@@ -132,3 +133,4 @@ struct PlayProgressView_Previews: PreviewProvider {
             .background(Color.red)
     }
 }
+#endif

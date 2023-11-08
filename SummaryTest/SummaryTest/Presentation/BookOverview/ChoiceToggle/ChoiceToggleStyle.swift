@@ -71,6 +71,7 @@ private extension ChoiceToggleStyle {
 
 // MARK: - Preview
 
+#if DEBUG
 struct ChoiceTogglePreview: View {
     @State private var isOn = true
     
@@ -89,3 +90,4 @@ struct ChoiceToggleStyle_Previews: PreviewProvider {
         ChoiceTogglePreview()
     }
 }
+#endif

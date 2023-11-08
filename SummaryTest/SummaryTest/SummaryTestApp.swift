@@ -13,7 +13,6 @@ import ComposableArchitecture
 struct SummaryTestApp: App {
     @State private var store = Store(initialState: BookOverviewDomain.State()) {
         BookOverviewDomain()
-            ._printChanges()
     }
     
     var body: some Scene {

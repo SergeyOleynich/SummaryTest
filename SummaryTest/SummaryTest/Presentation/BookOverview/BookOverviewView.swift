@@ -108,6 +108,7 @@ private extension BookOverviewView {
 
 // MARK: - Preview
 
+#if DEBUG
 struct BookOverviewView_Previews: PreviewProvider {
     static var previews: some View {
         BookOverviewView(
@@ -115,3 +116,4 @@ struct BookOverviewView_Previews: PreviewProvider {
                 initialState: BookOverviewDomain.State()) { BookOverviewDomain() })
     }
 }
+#endif

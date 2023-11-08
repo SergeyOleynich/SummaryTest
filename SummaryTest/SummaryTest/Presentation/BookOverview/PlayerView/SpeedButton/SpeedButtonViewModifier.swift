@@ -32,6 +32,7 @@ private extension SpeedButtonStyle {
 
 // MARK: - Preview
 
+#if DEBUG
 struct SpeedButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
         Button("Speed 1x") {
@@ -40,3 +41,4 @@ struct SpeedButtonStyle_Previews: PreviewProvider {
         .buttonStyle(SpeedButtonStyle())
     }
 }
+#endif

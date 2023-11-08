@@ -9,7 +9,6 @@ import SwiftUI
 
 import ComposableArchitecture
 import AVFoundation
-import StoreKit
 
 struct BookOverviewDomain: Reducer {
     struct State: Equatable {
@@ -75,6 +74,10 @@ struct BookOverviewDomain: Reducer {
         case reading
     }
     
+    enum CancellID {
+        case audioPlayerObserve
+    }
+    
     @Dependency(\.storeKit) var storeKit
     @Dependency(\.audioPlayer) var audioPlayer
     
@@ -121,7 +124,7 @@ struct BookOverviewDomain: Reducer {
                         await send(.didReceivePlayerError(errorMessage: error.localizedDescription))
                     }
                 }
-                //TODO: need to make cancel
+                .cancellable(id: CancellID.audioPlayerObserve)
                 
             case .playerViewAction:
                 return .none
@@ -144,7 +147,10 @@ struct BookOverviewDomain: Reducer {
                 guard let activeKeypoint = state.book?.keyPoints[safe: index - 1] else { return .none }
                 
                 state.activeKeypoint = activeKeypoint
-                return .send(.playerViewAction(action: .didReceiveItemUrl(item: activeKeypoint.url)))
+                return .merge(
+                    .cancel(id: CancellID.audioPlayerObserve),
+                    .send(.playerViewAction(action: .didReceiveItemUrl(item: activeKeypoint.url)))
+                )
                 
             case .playerControlAction(.forwardButtonTapped):
                 guard let activeKeypoint = state.activeKeypoint else { return .none }
@@ -152,7 +158,10 @@ struct BookOverviewDomain: Reducer {
                 guard let activeKeypoint = state.book?.keyPoints[safe: index + 1] else { return .none }
                 
                 state.activeKeypoint = activeKeypoint
-                return .send(.playerViewAction(action: .didReceiveItemUrl(item: activeKeypoint.url)))
+                return .merge(
+                    .cancel(id: CancellID.audioPlayerObserve),
+                    .send(.playerViewAction(action: .didReceiveItemUrl(item: activeKeypoint.url)))
+                )
                 
             case .playerControlAction:
                 return .none
@@ -254,11 +263,5 @@ private extension BookOverviewDomain.State {
         guard let index = book?.keyPoints.firstIndex(where: { $0.id == activeKeypoint?.id ?? 0 }) else { return "" }
         
         return "KEY POINT \(index + 1) OF \(book?.keyPoints.count ?? 0)"
-    }
-}
-
-extension Collection {
-    subscript (safe index: Index) -> Element? {
-        return indices.contains(index) ? self[index] : nil
     }
 }
