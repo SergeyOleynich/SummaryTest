@@ -20,6 +20,11 @@
 		7D1CEEC32AFAC53E00F05C7D /* PlayerProgressDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEC22AFAC53E00F05C7D /* PlayerProgressDomain.swift */; };
 		7D1CEED42AFAFCA100F05C7D /* Product.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 7D1CEED32AFAFCA100F05C7D /* Product.storekit */; };
 		7D1CEED62AFAFDE600F05C7D /* StoreKitClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEED52AFAFDE600F05C7D /* StoreKitClient.swift */; };
+		7D1CEEDA2AFB776800F05C7D /* StoreKitClient+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEED92AFB776800F05C7D /* StoreKitClient+Dependency.swift */; };
+		7D1CEEDC2AFB779000F05C7D /* StoreKitActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEDB2AFB779000F05C7D /* StoreKitActor.swift */; };
+		7D1CEEDE2AFB77F100F05C7D /* AudioActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEDD2AFB77F100F05C7D /* AudioActor.swift */; };
+		7D1CEEE02AFB781A00F05C7D /* AudioDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEDF2AFB781A00F05C7D /* AudioDelegate.swift */; };
+		7D1CEEE22AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D1CEEE12AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift */; };
 		7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */; };
 		7D60AFEF2AF806C400BA43C2 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 7D60AFEE2AF806C400BA43C2 /* ComposableArchitecture */; };
 		7D60AFF12AF806DA00BA43C2 /* PlayerControlDomain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */; };
@@ -50,6 +55,11 @@
 		7D1CEEC22AFAC53E00F05C7D /* PlayerProgressDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProgressDomain.swift; sourceTree = "<group>"; };
 		7D1CEED32AFAFCA100F05C7D /* Product.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Product.storekit; sourceTree = "<group>"; };
 		7D1CEED52AFAFDE600F05C7D /* StoreKitClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitClient.swift; sourceTree = "<group>"; };
+		7D1CEED92AFB776800F05C7D /* StoreKitClient+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreKitClient+Dependency.swift"; sourceTree = "<group>"; };
+		7D1CEEDB2AFB779000F05C7D /* StoreKitActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreKitActor.swift; sourceTree = "<group>"; };
+		7D1CEEDD2AFB77F100F05C7D /* AudioActor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioActor.swift; sourceTree = "<group>"; };
+		7D1CEEDF2AFB781A00F05C7D /* AudioDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDelegate.swift; sourceTree = "<group>"; };
+		7D1CEEE12AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AudioPlayerClient+Dependency.swift"; sourceTree = "<group>"; };
 		7D60AFEB2AF8001200BA43C2 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		7D60AFF02AF806DA00BA43C2 /* PlayerControlDomain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlDomain.swift; sourceTree = "<group>"; };
 		7D60AFF62AF815C600BA43C2 /* PlayerProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerProgressView.swift; sourceTree = "<group>"; };
@@ -139,6 +149,9 @@
 			isa = PBXGroup;
 			children = (
 				7D1CEEC02AFA8F9A00F05C7D /* AudioPlayerClient.swift */,
+				7D1CEEDD2AFB77F100F05C7D /* AudioActor.swift */,
+				7D1CEEDF2AFB781A00F05C7D /* AudioDelegate.swift */,
+				7D1CEEE12AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift */,
 			);
 			path = AudioPlayerClient;
 			sourceTree = "<group>";
@@ -148,6 +161,8 @@
 			children = (
 				7D1CEED32AFAFCA100F05C7D /* Product.storekit */,
 				7D1CEED52AFAFDE600F05C7D /* StoreKitClient.swift */,
+				7D1CEEDB2AFB779000F05C7D /* StoreKitActor.swift */,
+				7D1CEED92AFB776800F05C7D /* StoreKitClient+Dependency.swift */,
 			);
 			path = StoreKit;
 			sourceTree = "<group>";
@@ -339,7 +354,10 @@
 				7D1CEEB92AFA49F900F05C7D /* PlayerTimeProgressDomain.swift in Sources */,
 				7D1CEE912AF9551B00F05C7D /* WidthPreferenceKey.swift in Sources */,
 				7D60AFF72AF815C600BA43C2 /* PlayerProgressView.swift in Sources */,
+				7D1CEEDA2AFB776800F05C7D /* StoreKitClient+Dependency.swift in Sources */,
+				7D1CEEDC2AFB779000F05C7D /* StoreKitActor.swift in Sources */,
 				7D60AFFD2AF8DEF300BA43C2 /* SpeedButtonViewModifier.swift in Sources */,
+				7D1CEEDE2AFB77F100F05C7D /* AudioActor.swift in Sources */,
 				7D1CEEAD2AF9F57600F05C7D /* BookOverviewDomain.swift in Sources */,
 				7D1CEEC12AFA8F9A00F05C7D /* AudioPlayerClient.swift in Sources */,
 				7D60B02A2AF8EE8D00BA43C2 /* PlayerView.swift in Sources */,
@@ -349,7 +367,9 @@
 				7D1CEEC32AFAC53E00F05C7D /* PlayerProgressDomain.swift in Sources */,
 				7D1CEEAF2AF9F8E000F05C7D /* PurchaseViewDomain.swift in Sources */,
 				7DD1394F2AF7F9AF0046AB8B /* SummaryTestApp.swift in Sources */,
+				7D1CEEE22AFB783C00F05C7D /* AudioPlayerClient+Dependency.swift in Sources */,
 				7D1CEED62AFAFDE600F05C7D /* StoreKitClient.swift in Sources */,
+				7D1CEEE02AFB781A00F05C7D /* AudioDelegate.swift in Sources */,
 				7D1CEEAB2AF9582500F05C7D /* PurchaseBackgroundView.swift in Sources */,
 				7D1CEEBB2AFA4AC500F05C7D /* PlayerViewDomain.swift in Sources */,
 				7D60AFEC2AF8001200BA43C2 /* PlayerControlsView.swift in Sources */,

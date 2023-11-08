@@ -21,8 +21,8 @@ struct BookOverviewDomain: Reducer {
         var playerState: PlayerViewDomain.State = .init()
         var playerControlState = PlayerControlDomain.State()
         
-        @PresentationState var playerAlert: AlertState<Action.Alert>?
-        @PresentationState var storeKitAlert: AlertState<Action.Alert>?
+        @PresentationState var playerAlert: AlertState<Action.PlayerAlertAction>?
+        @PresentationState var storeKitAlert: AlertState<Action.StoreKitAlertAction>?
     }
     
     enum Action {
@@ -32,17 +32,21 @@ struct BookOverviewDomain: Reducer {
 
         case onRequestPurchaseItem
         case didLoadPurchaseItem(item: Product)
-        case purchaseFinished
         case choiceToggleTapped
         
         case didReceivePlayerError(errorMessage: String)
         case didReceiveStoreKitError(errorMessage: String)
+        case didPurchase
         
-        case playerAlert(PresentationAction<Alert>)
-        case storeKitAlert(PresentationAction<Alert>)
+        case playerAlert(PresentationAction<PlayerAlertAction>)
+        case storeKitAlert(PresentationAction<StoreKitAlertAction>)
         
-        enum Alert: Equatable {
+        enum PlayerAlertAction: Equatable {
             
+        }
+        
+        enum StoreKitAlertAction: Equatable {
+            case ok
         }
     }
     
@@ -66,9 +70,16 @@ struct BookOverviewDomain: Reducer {
                 return .run {[item = state.purchaseState?.product] send in
                     guard let item = item else { return }
                     
-                    guard let _ = try await storeKit.purchase(item) else { return }
-                    
-                    await send(.purchaseFinished)
+                    do {
+                        guard (try await storeKit.purchase(item)) != nil else {
+                            await send(.didReceiveStoreKitError(errorMessage: "Could not process"))
+                            return
+                        }
+                        
+                        await send(.didPurchase)
+                    } catch {
+                        await send(.didReceiveStoreKitError(errorMessage: error.localizedDescription))
+                    }
                 }
                 
             case .purchaseViewAction:
@@ -137,39 +148,49 @@ struct BookOverviewDomain: Reducer {
             case .choiceToggleTapped:
                 return .none
                 
-            case .purchaseFinished:
+            case let .didReceivePlayerError(errorMessage):
+                state.playerAlert = AlertState {
+                    TextState("Failed to process player item")
+                } actions: {
+                    ButtonState(role: .cancel) {
+                        TextState("Ok!")
+                    }
+                } message: {
+                    TextState(errorMessage)
+                }
+                return .none
+            
+            case let .didReceiveStoreKitError(errorMessage):
+                state.storeKitAlert = AlertState {
+                    TextState("Failed to process store kit")
+                } actions: {
+                    ButtonState(role: .cancel) {
+                        TextState("Ok!")
+                    }
+                } message: {
+                    TextState(errorMessage)
+                }
+                return .none
+                
+            case .didPurchase:
+                state.storeKitAlert = AlertState {
+                    TextState("Purchase is successful!")
+                } actions: {
+                    ButtonState(role: .cancel) {
+                        TextState("Ok!")
+                    }
+                } message: {
+                    TextState("You Buy IT!")
+                }
+                
                 state.purchaseState = nil
                 let itemUrl = Bundle.main.url(forResource: "Summary_of_Atomic_Habits", withExtension: "mp3")!
                 
                 return .send(.playerViewAction(action: .didReceiveItemUrl(itemUrl: itemUrl)))
                 
-            case let .didReceivePlayerError(errorMessage):
-                state.playerAlert = AlertState {
-                    TextState("Failed to process player item")
-                  } actions: {
-                    ButtonState(role: .cancel) {
-                      TextState("Ok!")
-                    }
-                  } message: {
-                    TextState(errorMessage)
-                  }
-                return .none
-            
-            case let .didReceiveStoreKitError(errorMessage):
-                state.playerAlert = AlertState {
-                    TextState("Failed to process store kit")
-                  } actions: {
-                    ButtonState(role: .cancel) {
-                      TextState("Ok!")
-                    }
-                  } message: {
-                    TextState(errorMessage)
-                  }
-                return .none
-                
             case .playerAlert:
                 return .none
-                
+            
             case .storeKitAlert:
                 return .none
             }
